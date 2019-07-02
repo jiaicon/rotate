@@ -6,7 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
 import fetch from './../util/request';
 import UpdateModel from './model';
-import { getBanner } from  './../util/util';
+import { getBanner, putBanner, postBanner, delBanner } from  './../util/util';
 
 let dragingIndex = -1;
 Object.defineProperty(exports, "__esModule", {
@@ -141,48 +141,40 @@ class Banner extends React.Component {
         this.setState({
             spinning: true
         });
-        //drag为移动的id,hover为移动的序号
-        fetch(`/api/banner/${id}`, {method: 'PUT', data: {...data}})
-            .then(res=>{
-                console.log('请求结果', res);
-                if(typeof res ==='object' && 'status' in res && res.status === 0) {
-                    this.setState({
-                        spinning: false,
-                        update: false,
-                        banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
-                    })
-                }else {
-                    this.setState({
-                        update: false,
-                        spinning: false
-                    });
-                    message.error('请求失败，请配置url或检查网络');
-                    console.warn('The request failed. Configure the URL or check the network');
-                }
-            });
+        putBanner(id, data, {
+            success: (res)=>{
+                this.setState({
+                    spinning: false,
+                    update: false,
+                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                })
+            },
+            failed: ()=>{
+                this.setState({
+                    update: false,
+                    spinning: false
+                });
+            }
+        });
     }
     delBanner(e, id) {
         e.preventDefault();
         this.setState({
             spinning: true
         });
-        //drag为移动的id,hover为移动的序号
-        fetch(`/api/banner/${id}`, {method: 'DELETE'})
-            .then(res=>{
-                console.log('请求结果', res);
-                if(typeof res ==='object' && 'status' in res && res.status === 0) {
-                    this.setState({
-                        spinning: false,
-                        banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
-                    })
-                }else {
-                    this.setState({
-                        spinning: false
-                    });
-                    message.error('请求失败，请配置url或检查网络');
-                    console.warn('The request failed. Configure the URL or check the network');
-                }
-            });
+        delBanner(id, {
+            success: (res)=>{
+                this.setState({
+                    spinning: false,
+                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                })
+            },
+            failed: ()=>{
+                this.setState({
+                    spinning: false
+                });
+            }
+        });
     }
     components = {
         body: {
@@ -193,25 +185,21 @@ class Banner extends React.Component {
         this.setState({
             spinning: true
         });
-        //drag为移动的id,hover为移动的序号
-        fetch(`/api/banner`, {method: 'POST', data: {...data}})
-            .then(res=>{
-                console.log('请求结果', res);
-                if(typeof res ==='object' && 'status' in res && res.status === 0) {
-                    this.setState({
-                        spinning: false,
-                        update: false,
-                        banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
-                    })
-                }else {
-                    this.setState({
-                        update: false,
-                        spinning: false
-                    });
-                    message.error('请求失败，请配置url或检查网络');
-                    console.warn('The request failed. Configure the URL or check the network');
-                }
-            });
+        postBanner(data, {
+            success: (res)=>{
+                this.setState({
+                    spinning: false,
+                    update: false,
+                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                })
+            },
+            failed: ()=>{
+                this.setState({
+                    update: false,
+                    spinning: false
+                });
+            }
+        });
     };
     moveRow = (dragIndex, hoverIndex) => {
         const { banners } = this.state;
@@ -355,5 +343,8 @@ class Banner extends React.Component {
 }
 
 Banner['getBanner']=getBanner;
+Banner['putBanner']=putBanner;
+Banner['delBanner']=delBanner;
+Banner['postBanner']=postBanner;
 
 exports['default']=Banner;
