@@ -6,11 +6,12 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
 import fetch from './../util/request';
 import UpdateModel from './model';
-import NpmUpload from 'npm_upload_eg';
 import { getBanner } from  './../util/util';
 
 let dragingIndex = -1;
-
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 class BodyRow extends React.Component {
     render() {
         const { isOver, connectDragSource, connectDropTarget, moveRow, ...restProps } = this.props;
@@ -95,7 +96,6 @@ class Banner extends React.Component {
     }
     componentDidMount() {
         this.getBanner();
-        console.log(NpmUpload)
     };
     getBanner() {
         this.setState({
@@ -354,4 +354,6 @@ class Banner extends React.Component {
     }
 }
 
-export default Banner;
+Banner['getBanner']=getBanner;
+
+exports['default']=Banner;
