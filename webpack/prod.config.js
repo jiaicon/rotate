@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     mode: 'production',
-    entry: './src/banner/banner.js',
+    entry: './src/banner/antd.js',
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, '../'),
