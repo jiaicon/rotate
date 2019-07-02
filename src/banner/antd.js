@@ -7,6 +7,7 @@ import update from 'immutability-helper';
 import fetch from './../util/request';
 import UpdateModel from './model';
 import NpmUpload from 'npm_upload_eg';
+import { getBanner } from  './../util/util';
 
 let dragingIndex = -1;
 
@@ -100,22 +101,19 @@ class Banner extends React.Component {
         this.setState({
             spinning: true
         });
-        fetch('/api/banner', {method: 'GET'})
-            .then(res=>{
-                console.log('请求结果', res);
-                if(typeof res ==='object' && 'status' in res && res.status === 0) {
-                    this.setState({
-                        spinning: false,
-                        banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
-                    })
-                }else {
-                    this.setState({
-                        spinning: false
-                    });
-                    message.error('请求失败，请配置url或检查网络');
-                    console.warn('The request failed. Configure the URL or check the network');
-                }
-            });
+        getBanner({
+            success: (res)=>{
+                this.setState({
+                    spinning: false,
+                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                })
+            },
+            failed: ()=>{
+                this.setState({
+                    spinning: false
+                });
+            }
+        });
     }
     sortBanner(drag, hover, callback) {
         this.setState({
