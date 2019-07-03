@@ -24,8 +24,15 @@ module.exports = {
                 options: {
                     limit: 10000
                 }
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-withimg-loader'
+            }, {
+                test: /\.(eot|ttf|wav|mp3)$/,
+                loader: 'file-loader'
             }
-        ]
+        ],
     },
     devServer: {
         contentBase: '../'

@@ -8,6 +8,8 @@ import fetch from './../util/request';
 import UpdateModel from './model';
 import { getBanner, putBanner, postBanner, delBanner } from  './../util/util';
 
+import Rotate from './rotate';
+
 let dragingIndex = -1;
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -330,13 +332,7 @@ class Banner extends React.Component {
                         />
                     </DndProvider>
                 </Spin>
-                <Modal
-                    visible={previewVisible}
-                    footer={null}
-                    onCancel={this.closeModal}
-                >
-                    <img alt={previewImage} style={{width: '100%'}} src={previewImage}/>
-                </Modal>
+                <Rotate visible={previewVisible} src={previewImage}/>
             </div>
         );
     }

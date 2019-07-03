@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { message, Spin } from 'antd';
 import fetch from './request';
 
 const getBanner = (options)=> {
