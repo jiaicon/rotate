@@ -7,7 +7,7 @@ module.exports = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, '../'),
-        libraryTarget: 'commonjs2'
+        // libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
