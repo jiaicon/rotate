@@ -336,10 +336,10 @@ class Banner extends React.Component {
     }
 }
 
-Banner['getBanner']=getBanner;
-Banner['putBanner']=putBanner;
-Banner['delBanner']=delBanner;
-Banner['postBanner']=postBanner;
+// Banner['getBanner']=getBanner;
+// Banner['putBanner']=putBanner;
+// Banner['delBanner']=delBanner;
+// Banner['postBanner']=postBanner;
 
 // Object.defineProperty(exports, "__esModule", {
 //     value: true
