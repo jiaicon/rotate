@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react';
 import {Modal, Upload, Icon, message} from 'antd';
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+
 function getBase64(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -128,4 +126,9 @@ class UploadModal extends PureComponent {
     }
 }
 
-exports["default"] = UploadModal;
+// Object.defineProperty(exports, "__esModule", {
+//     value: true
+// });
+// exports["default"] = UploadModal;
+
+export default UploadModal;

@@ -54,9 +54,16 @@ const delBanner=(id, options)=> {
             }
         });
 };
-module.exports={
+// module.exports={
+//     getBanner,
+//     putBanner,
+//     postBanner,
+//     delBanner
+// };
+
+export {
     getBanner,
     putBanner,
     postBanner,
     delBanner
-};
+}

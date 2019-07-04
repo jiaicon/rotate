@@ -11,9 +11,7 @@ import { getBanner, putBanner, postBanner, delBanner } from  './../util/util';
 import Rotate from './rotate';
 
 let dragingIndex = -1;
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+
 class BodyRow extends React.Component {
     render() {
         const { isOver, connectDragSource, connectDropTarget, moveRow, ...restProps } = this.props;
@@ -343,4 +341,9 @@ Banner['putBanner']=putBanner;
 Banner['delBanner']=delBanner;
 Banner['postBanner']=postBanner;
 
-exports['default']=Banner;
+// Object.defineProperty(exports, "__esModule", {
+//     value: true
+// });
+// exports['default']=Banner;
+
+export default Banner;

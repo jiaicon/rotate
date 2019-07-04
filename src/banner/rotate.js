@@ -143,7 +143,8 @@ class Rotate extends PureComponent {
         )
     }
 }
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports['default']=Rotate;
+// Object.defineProperty(exports, "__esModule", {
+//     value: true
+// });
+// exports['default']=Rotate;
+export default Rotate;
