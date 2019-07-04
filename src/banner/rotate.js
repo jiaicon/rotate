@@ -49,8 +49,8 @@ class Rotate extends PureComponent {
             boxHeight: 0,
             current: 0
         });
-        this.refs.imgBox.style.height="100%";
-        this.refs.imgstyle.style.width="100%";
+        this.imgBox.style.height="100%";
+        this.imgstyle.style.width="100%";
     }
     confBox(callback) {
         //记录modal的高宽，用于重置
@@ -72,10 +72,10 @@ class Rotate extends PureComponent {
         this.confBox(()=>{
             if((current/90)%2 === 0) {
                 this.imgBox.style.height=this.state.boxHeight+'px';
-                this.refs.imgstyle.style.width=this.state.boxWidth+'px';
+                this.imgstyle.style.width=this.state.boxWidth+'px';
             }else {
                 this.imgBox.style.height=this.state.boxHeight+'px';
-                this.refs.imgstyle.style.width=this.state.boxHeight+'px';
+                this.imgstyle.style.width=this.state.boxHeight+'px';
             }
         });
 
@@ -90,11 +90,11 @@ class Rotate extends PureComponent {
         let current = this.state.current + 90;
         this.confBox(()=>{
             if((current/90)%2 === 0) {
-                this.refs.imgBox.style.height=this.state.boxHeight+'px';
-                this.refs.imgstyle.style.width=this.state.boxWidth+'px';
+                this.imgBox.style.height=this.state.boxHeight+'px';
+                this.imgstyle.style.width=this.state.boxWidth+'px';
             }else {
-                this.refs.imgBox.style.height=this.state.boxHeight+'px';
-                this.refs.imgstyle.style.width=this.state.boxHeight+'px';
+                this.imgBox.style.height=this.state.boxHeight+'px';
+                this.imgstyle.style.width=this.state.boxHeight+'px';
             }
         });
         this.setState({
@@ -139,7 +139,7 @@ class Rotate extends PureComponent {
         return (
             <Modal {...props}>
                 <div ref={imgBox=>this.imgBox=imgBox} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <img ref='imgstyle' style={{transform: `rotate(${current}deg)`, width: '100%', objectFit: 'cover'}} src={iserror ? img : src} alt={iserror ? img : src}/>
+                    <img ref={imgstyle=>this.imgstyle=imgstyle} style={{transform: `rotate(${current}deg)`, width: '100%', objectFit: 'cover'}} src={iserror ? img : src} alt={iserror ? img : src}/>
                 </div>
             </Modal>
         )
