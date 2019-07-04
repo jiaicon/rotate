@@ -23,7 +23,7 @@
 //     }
 // });
 
-export {default as Banner} from './antd';
+// export {default as Banner} from './antd';
 export {default as Rotate} from './rotate';
 // export {default as Banner} from './antd';
 
