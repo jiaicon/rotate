@@ -32,8 +32,9 @@ class Rotate extends PureComponent {
         var img = document.createElement("img");
         img.src = `${src}`;
         const that = this;
-
+        console.log(img);
         img.onerror = function () {
+            console.log('error');
             that.setState({iserror: true});
         };
         img.onload = function () {
