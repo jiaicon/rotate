@@ -28,6 +28,7 @@ class Rotate extends PureComponent {
         console.log('接收到的src', props);
         console.log('this.defaultSrc', this.defaultSrc);
         let src = props || this.defaultSrc;
+        console.log('使用的：', src);
         var img = document.createElement("img");
         img.src = `${src}`;
         const that = this;
