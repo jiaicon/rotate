@@ -54,8 +54,8 @@ class Rotate extends PureComponent {
     }
     confBox(callback) {
         //记录modal的高宽，用于重置
-        const height = this.refs.imgBox.offsetHeight;
-        const width = this.refs.imgBox.offsetWidth;
+        const height = this.imgBox.offsetHeight;
+        const width = this.imgBox.offsetWidth;
         this.setState({
             boxWidth: width,
             boxHeight: height
@@ -71,10 +71,10 @@ class Rotate extends PureComponent {
         let current = this.state.current - 90;
         this.confBox(()=>{
             if((current/90)%2 === 0) {
-                this.refs.imgBox.style.height=this.state.boxHeight+'px';
+                this.imgBox.style.height=this.state.boxHeight+'px';
                 this.refs.imgstyle.style.width=this.state.boxWidth+'px';
             }else {
-                this.refs.imgBox.style.height=this.state.boxHeight+'px';
+                this.imgBox.style.height=this.state.boxHeight+'px';
                 this.refs.imgstyle.style.width=this.state.boxHeight+'px';
             }
         });
@@ -138,10 +138,9 @@ class Rotate extends PureComponent {
         );
         return (
             <Modal {...props}>
-                <div ref="imgBox" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-
+                <div ref={imgBox=>this.imgBox=imgBox} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <img ref='imgstyle' style={{transform: `rotate(${current}deg)`, width: '100%', objectFit: 'cover'}} src={iserror ? img : src} alt={iserror ? img : src}/>
                 </div>
-                <img ref='imgstyle' style={{transform: `rotate(${current}deg)`, width: '100%', objectFit: 'cover'}} src={iserror ? img : src} alt={iserror ? img : src}/>
             </Modal>
         )
     }
