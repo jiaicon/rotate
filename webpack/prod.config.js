@@ -3,11 +3,11 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     mode: 'production',
-    entry: './src/banner/index.js',
+    entry: './src/main.js',
     output: {
-        filename: 'index.js',
+        filename: 'dist/index.js',
         path: path.resolve(__dirname, '../'),
-        // libraryTarget: 'commonjs2'
+        libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
@@ -22,11 +22,18 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000
+                    limit: 10000,
+                    name: "dist/img/[hash:8].[name].[ext]"
                 }
             }, {
                 test: /\.(eot|ttf|wav|mp3)$/,
                 loader: 'file-loader'
+            },
+            {
+                test: /\.js\.map$/,
+                use: {
+                    loader: 'file-loader'
+                },
             }
         ]
     },

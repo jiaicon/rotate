@@ -1,6 +1,6 @@
-// const _banner = require("./antd");
-// const _uploadPhoto = require("./upload");
-const _rotate = require("./rotate");
+// const _banner = require("./banner/antd");
+// const _uploadPhoto = require("./banner/upload");
+const _rotate = require("./banner/rotate");
 //
 Object.defineProperty(exports, "Rotate", {
     enumerable: true,
@@ -23,9 +23,9 @@ Object.defineProperty(exports, "Rotate", {
 //     }
 // });
 
-// export {default as Banner} from './antd';
-// export {default as Rotate} from './rotate';
-// export {default as Banner} from './antd';
+// export {default as Banner} from './banner/antd';
+// export {default as Rotate} from './banner/rotate';
+// export {default as Banner} from './banner/antd';
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@babel/polyfill';
-import {Rotate} from './banner/index';
+import {Rotate} from './main';
 // import {Banner} from './banner/index';
 
 class Test extends React.Component {
