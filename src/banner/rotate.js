@@ -41,6 +41,7 @@ class Rotate extends PureComponent {
             that.setState({
                 width: img.width,
                 height: img.height,
+                iserror: false
             })
         };
         return src;
