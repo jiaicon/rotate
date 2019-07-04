@@ -2,9 +2,9 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import {Modal, Button} from 'antd';
-import img from '../img/error.png'
+// import img from '../img/error.png'
+let img = require('../img/error.png');
 
-//
 class Rotate extends PureComponent {
     static propTypes = {
         /** 对话框是否可见*/

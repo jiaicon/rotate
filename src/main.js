@@ -1,4 +1,4 @@
-// const _banner = require("./banner/antd");
+const _banner = require("./banner/antd");
 // const _uploadPhoto = require("./banner/upload");
 const _rotate = require("./banner/rotate");
 //
@@ -9,12 +9,12 @@ Object.defineProperty(exports, "Rotate", {
     }
 });
 //
-// Object.defineProperty(exports, "Banner", {
-//     enumerable: true,
-//     get: function get() {
-//         return _banner["default"];
-//     }
-// });
+Object.defineProperty(exports, "Banner", {
+    enumerable: true,
+    get: function get() {
+        return _banner["default"];
+    }
+});
 
 // Object.defineProperty(exports, "UploadPhoto", {
 //     enumerable: true,
