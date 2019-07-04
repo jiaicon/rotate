@@ -2,14 +2,14 @@
   "name": "banner-h5",
   "version": "1.1.35",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack --env.NODE_ENV=production",
     "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
-    "index.js"
+    "dist"
   ],
   "author": "icon",
   "license": "ISC",
