@@ -138,7 +138,10 @@ class Rotate extends PureComponent {
         );
         return (
             <Modal {...props}>
-                {component}
+                <div ref="imgBox" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+
+                </div>
+                <img ref='imgstyle' style={{transform: `rotate(${current}deg)`, width: '100%', objectFit: 'cover'}} src={iserror ? img : src} alt={iserror ? img : src}/>
             </Modal>
         )
     }
