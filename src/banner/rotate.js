@@ -115,7 +115,7 @@ class Rotate extends PureComponent {
     }
 
     render() {
-        const {previewVisible, current, src, iserror, width, height} = this.state;
+        const {previewVisible, current, src, iserror} = this.state;
         //简单的预览，点击背景关闭
         //底脚
         const footer = (
@@ -131,11 +131,7 @@ class Rotate extends PureComponent {
             maskClosable: true,
             forceRender: true,
         };
-        const component = (
-            <div ref="imgBox" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <img ref='imgstyle' style={{transform: `rotate(${current}deg)`, width: '100%', objectFit: 'cover'}} src={iserror ? img : src} alt={iserror ? img : src}/>
-            </div>
-        );
+
         return (
             <Modal {...props}>
                 <div ref={imgBox=>this.imgBox=imgBox} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
