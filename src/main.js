@@ -1,4 +1,4 @@
-// const _banner = require("./banner/antd");
+const _banner = require("./banner/antd");
 // const _uploadPhoto = require("./banner/upload");
 const _rotate = require("./banner/rotate");
 //
