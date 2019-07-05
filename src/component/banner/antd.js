@@ -1,88 +1,16 @@
 import React from 'react';
 import autoBind from 'react-autobind';
-import { Table, Spin, Tag, Button, message, Modal } from 'antd';
-import { DndProvider, DragSource, DropTarget } from 'react-dnd';
+import { Table, Spin, Tag, Button, message } from 'antd';
+import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
-import fetch from './../util/request';
+import fetch from './../../util/request';
 import UpdateModel from './model';
-import { getBanner, putBanner, postBanner, delBanner } from  './../util/util';
+import { getBanner, putBanner, postBanner, delBanner } from  './../../util/util';
 
-import Rotate from './rotate';
+import Rotate from './../rotate/rotate';
+import DragableBodyRow from './dnd';
 
-let dragingIndex = -1;
-
-class BodyRow extends React.Component {
-    render() {
-        const { isOver, connectDragSource, connectDropTarget, moveRow, ...restProps } = this.props;
-        const style = { ...restProps.style, cursor: 'move' };
-
-        let { className } = restProps;
-        if (isOver) {
-            if (restProps.index > dragingIndex) {
-                className += ' drop-over-downward';
-            }
-            if (restProps.index < dragingIndex) {
-                className += ' drop-over-upward';
-            }
-        }
-
-        return connectDragSource(
-            connectDropTarget(<tr {...restProps} className={className} style={style} />),
-        );
-    }
-}
-
-
-const rowSource = {
-    beginDrag(props) {
-        dragingIndex = props.index;
-        return {
-            index: props.index,
-        };
-    },
-};
-const rowTarget = {
-    drop(props, monitor) {
-        const dragIndex = monitor.getItem().index;
-        const hoverIndex = props.index;
-
-        // Don't replace items with themselves
-        if (dragIndex === hoverIndex) {
-            return;
-        }
-
-        // Time to actually perform the action
-        props.moveRow(dragIndex, hoverIndex);
-
-        // Note: we're mutating the monitor item here!
-        // Generally it's better to avoid mutations,
-        // but it's good here for the sake of performance
-        // to avoid expensive index searches.
-        monitor.getItem().index = hoverIndex;
-    },
-};
-const DragableBodyRow = DropTarget('row', rowTarget, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-}))(
-    DragSource('row', rowSource, connect => ({
-        connectDragSource: connect.dragSource(),
-    }))(BodyRow),
-);
-function createComparisonFunction(propertyName) {
-    return function (object1, object2) {
-        let value1 = object1[propertyName];
-        let value2 = object2[propertyName];
-        if (value1 < value2) {
-            return -1;
-        } else if (value1 > value2) {
-            return 1;
-        } else {
-            return 0;
-        }
-    };
-}
 class Banner extends React.Component {
     constructor(props) {
         super(props);
@@ -105,7 +33,7 @@ class Banner extends React.Component {
             success: (res)=>{
                 this.setState({
                     spinning: false,
-                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                    banners: Array.from(res.data)
                 })
             },
             failed: ()=>{
@@ -126,7 +54,7 @@ class Banner extends React.Component {
                 if(typeof res ==='object' && 'status' in res && res.status === 0) {
                     this.setState({
                         spinning: false,
-                        banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                        banners: Array.from(res.data)
                     })
                 }else {
                     this.setState({
@@ -146,7 +74,7 @@ class Banner extends React.Component {
                 this.setState({
                     spinning: false,
                     update: false,
-                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                    banners: Array.from(res.data)
                 })
             },
             failed: ()=>{
@@ -166,7 +94,7 @@ class Banner extends React.Component {
             success: (res)=>{
                 this.setState({
                     spinning: false,
-                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                    banners: Array.from(res.data)
                 })
             },
             failed: ()=>{
@@ -190,7 +118,7 @@ class Banner extends React.Component {
                 this.setState({
                     spinning: false,
                     update: false,
-                    banners: res.data.length ? Array.from(res.data).sort(createComparisonFunction('sort')) : []
+                    banners: Array.from(res.data)
                 })
             },
             failed: ()=>{
@@ -205,7 +133,6 @@ class Banner extends React.Component {
         const { banners } = this.state;
         const dragRow = banners[dragIndex];
         const hoverRow = banners[hoverIndex];
-        console.log(banners)
         this.sortBanner(dragRow.id, hoverRow.sort)
     };
     handleOk() {
@@ -330,7 +257,7 @@ class Banner extends React.Component {
                         />
                     </DndProvider>
                 </Spin>
-                <Rotate visible={previewVisible} src={previewImage}/>
+                <Rotate visible={previewVisible} src={previewImage} isRotate={true}/>
             </div>
         );
     }

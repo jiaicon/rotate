@@ -29,16 +29,8 @@ export default class UpdateModel extends PureComponent {
     componentDidMount() {
 
     }
-    // handleOnChange = ({ fileList }) => {
-    //     // console.log('fileList:::ssss::', fileList)
-    //     // return fileList&&fileList.map(file => ({
-    //     //     status: file.status,
-    //     //     uid: file.uid,
-    //     //     url: file.response?file.response.data.url:file.url,
-    //     // }));
-    // };
+
     handleOnSet = (fileList)=>{
-        console.log('fileList:::', fileList);
         let file = {};
         if(fileList) {
             file.status = fileList.status;

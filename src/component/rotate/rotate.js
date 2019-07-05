@@ -2,14 +2,14 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import {Modal, Button} from 'antd';
-// import img from '../img/error.png'
-let img = require('../img/error.png');
+let img = require('../../img/error.png');
 
 class Rotate extends PureComponent {
     static propTypes = {
         /** 对话框是否可见*/
         visible: PropTypes.bool,
-        src: PropTypes.string
+        src: PropTypes.string,
+        isRotate: PropTypes.bool
     };
 
     constructor(props) {
@@ -21,6 +21,7 @@ class Rotate extends PureComponent {
             current: 0,    //当前旋转的角度
             iserror: false,
             src: this.confSrc(props.src),
+            isRotate: props.isRotate || false
         }
     }
 
@@ -115,7 +116,7 @@ class Rotate extends PureComponent {
     }
 
     render() {
-        const {previewVisible, current, src, iserror} = this.state;
+        const {previewVisible, current, src, iserror, isRotate} = this.state;
         //简单的预览，点击背景关闭
         //底脚
         const footer = (
@@ -126,7 +127,7 @@ class Rotate extends PureComponent {
         );  //需要旋转
         const props = {
             visible: previewVisible,
-            footer: footer,
+            footer: isRotate ? footer : null,
             onCancel: this.closeModal,
             maskClosable: true,
             forceRender: true,
