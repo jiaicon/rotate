@@ -8,18 +8,12 @@
 
 #如遇到代理问题  允许  npm config set proxy null
 
-#安装 npm i banner-h5
+#安装 npm i rotate
 
 
 #api
 
-#apiHost: 传入的服务器地址  配置window   eg:http://localhost:9527'
-已有方法
-options支持success,failed方法
-#getBanner()     获取banner
-#putBanner(id, data, options)     修改banner  data为修改的数据(photo, href)
-#postBanner(data, options)     新增banner  data为修改的数据(photo, href)
-#delBanner(id, options)     删除banner  
-
-目前只支持拖动排序
-添加替换排序
+visible   bool   是否显示
+isRotate  bool   是否旋转
+src       string 图片路径
+onCancel  func   关闭的回调

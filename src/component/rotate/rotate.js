@@ -9,7 +9,8 @@ class Rotate extends PureComponent {
         /** 对话框是否可见*/
         visible: PropTypes.bool,
         src: PropTypes.string,
-        isRotate: PropTypes.bool
+        isRotate: PropTypes.bool,
+        onCancel: PropTypes.func
     };
 
     constructor(props) {
@@ -52,6 +53,8 @@ class Rotate extends PureComponent {
         });
         this.imgBox.style.height="100%";
         this.imgstyle.style.width="100%";
+        const onCancel = this.props.onCancel;
+        onCancel&&typeof onCancel === 'function'&&onCancel()
     }
     confBox(callback) {
         //记录modal的高宽，用于重置
