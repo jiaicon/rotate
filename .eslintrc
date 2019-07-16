@@ -45,12 +45,15 @@
     "no-unused-expressions": "off",
     //按照具体规范的React.createClass 的生命周期函数书写代码,空的周期会报错
     "react/sort-comp": "off",
+    //没有用到的state
+    //"react/no-unused-state": "off
     //return 语句中不能有赋值表达式
     "no-return-assign": "off",
     //命名前的下划线
     "no-underscore-dangle": "off",
     //匿名函数
-    "func-names": "off"
+    "func-names": "off",
+    "no-lonely-if": "off"
   },
   "parserOptions": {  //支持import和require
     "ecmaVersion": 7,
