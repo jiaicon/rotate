@@ -10,10 +10,13 @@
 
 #安装 npm i rotate
 
+#使用PHPstorm，开启ESLint，使用ESLint快捷键
+#开启ESLint快捷键方法：preference->Keymap->搜索ESLint->Fix ESLint Problems
 
 #api
 
-visible   bool   是否显示
-isRotate  bool   是否旋转
-src       string 图片路径
-onCancel  func   关闭的回调
+visible    bool   是否显示
+isRotate   bool   是否旋转
+src        string 图片路径
+onCancel   func   关闭的回调
+onImgError func   图片出错是回调 
