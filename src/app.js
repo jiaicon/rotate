@@ -25,7 +25,6 @@ class Test extends React.Component {
 
   render() {
     const { visible, src } = this.state;
-    // src="https://tpc.googlesyndication.com/daca_images/simgad/15515071172727742888"
     return (
       <div>
 

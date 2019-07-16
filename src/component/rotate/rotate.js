@@ -7,11 +7,15 @@ const img = require('./../../img/error.png');
 
 class Rotate extends PureComponent {
   static propTypes = {
-    /** 对话框是否可见 */
+    // modal是否显示
     visible: PropTypes.bool,
+    // 传入的图片路径，必填
     src: PropTypes.string.isRequired,
+    // 是否旋转，默认可以
     isRotate: PropTypes.bool,
+    // 关闭modal的回调方法
     onCancel: PropTypes.func,
+    // 图片出错时的回调方法
     onImgError: PropTypes.func
   }
 
@@ -21,11 +25,13 @@ class Rotate extends PureComponent {
     this.defaultSrc = img;
     this.state = {
       previewVisible: props.visible,
-      current: 0, // 当前旋转的角度
+      // 当前旋转的角度
+      current: 0,
       isError: false,
       src: this.configSrc(props.src),
       isRotate: 'isRotate' in props ? props.isRotate : true,
-      imgHeightWidth: 1 // 记录传入的img高宽比
+      // 记录传入的img高宽比
+      imgHeightWidth: 1
     };
   }
 
@@ -36,7 +42,7 @@ class Rotate extends PureComponent {
     image.onerror = () => {
       this.setState({ isError: true });
       const { onImgError } = this.props;
-      onImgError && typeof onImgError === 'function' && onImgError();
+      onImgError && onImgError();
     };
     image.onload = () => {
       this.setState({
@@ -56,7 +62,7 @@ class Rotate extends PureComponent {
       previewVisible: false
     }, () => {
       const { onCancel } = this.props;
-      onCancel && typeof onCancel === 'function' && onCancel();
+      onCancel && onCancel();
     });
   }
 
@@ -99,9 +105,9 @@ class Rotate extends PureComponent {
     if (imgHeightWidth < 1) {
       // 图片宽比较长
       if ((current / 90) % 2 === 0) {
-        this.imgstyle.style.width = `${boxWidth}px`;
+        this.imgStyle.style.width = `${boxWidth}px`;
       } else {
-        this.imgstyle.style.width = `${boxHeight}px`;
+        this.imgStyle.style.width = `${boxHeight}px`;
       }
     }
     this.setState({
@@ -146,7 +152,7 @@ class Rotate extends PureComponent {
           ref={imgBox => this.imgBox = imgBox}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <img
-            ref={imgstyle => this.imgstyle = imgstyle}
+            ref={imgStyle => this.imgStyle = imgStyle}
             style={{ transform: `rotate(${current}deg)`, width: `${imgHeightWidth < 1 ? '100%' : 'auto'}` }}
             src={isError ? img : src}
             alt={isError ? img : src} />
@@ -156,8 +162,4 @@ class Rotate extends PureComponent {
   }
 }
 
-// Object.defineProperty(exports, "__esModule", {
-//     value: true
-// });
-// exports['default']=Rotate;
 export default Rotate;
