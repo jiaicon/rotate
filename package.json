@@ -5,14 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "precommit": "npm run lint",
-    "prepush": "npm run lint",
     "build": "webpack --env.NODE_ENV=production",
     "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js --ext .jsx src",
     "lint-fix": "eslint --fix --ext .js --ext .jsx src"
   },
-  "pre-push": ["prepush"],
   "files": [
     "dist"
   ],
