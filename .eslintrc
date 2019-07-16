@@ -48,7 +48,9 @@
     //return 语句中不能有赋值表达式
     "no-return-assign": "off",
     //命名前的下划线
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    //匿名函数
+    "func-names": "off"
   },
   "parserOptions": {  //支持import和require
     "ecmaVersion": 7,
