@@ -12,6 +12,7 @@
 
 #使用PHPstorm，开启ESLint，使用ESLint快捷键
 #开启ESLint快捷键方法：preference->Keymap->搜索ESLint->Fix ESLint Problems
+#git commit时会检查ESLint，有问题时会出错，git push时Everything up-to-date
 
 #api
 
