@@ -14,6 +14,8 @@
 #开启ESLint快捷键方法：preference->Keymap->搜索ESLint->Fix ESLint Problems
 #git commit时会检查ESLint，有问题时会出错，git push时Everything up-to-date
 
+#npm run lint-fix    修复ESLint问题
+
 #api
 
 visible    bool   是否显示
