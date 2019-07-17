@@ -109,6 +109,13 @@ class Rotate extends PureComponent {
       } else {
         this.imgStyle.style.width = `${boxHeight}px`;
       }
+    } else {
+      // 图片高比较长
+      if ((current / 90) % 2 === 0) {
+        this.imgStyle.style.height = `${boxHeight}px`;
+      } else {
+        this.imgStyle.style.height = `${boxWidth}px`;
+      }
     }
     this.setState({
       current
@@ -145,7 +152,7 @@ class Rotate extends PureComponent {
       maskClosable: true,
       forceRender: true,
     };
-
+console.log(imgHeightWidth)
     return (
       <Modal {...props}>
         <div
@@ -153,7 +160,7 @@ class Rotate extends PureComponent {
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <img
             ref={imgStyle => this.imgStyle = imgStyle}
-            style={{ transform: `rotate(${current}deg)`, width: `${imgHeightWidth < 1 ? '100%' : 'auto'}` }}
+            style={{ transform: `rotate(${current}deg)`, width: `${imgHeightWidth >= 1 ? 'auto' : '100%'}`, maxWidth: '100%' }}
             src={isError ? img : src}
             alt={isError ? img : src} />
         </div>
