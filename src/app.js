@@ -5,7 +5,7 @@ import autoBind from 'react-autobind';
 import { Rotate } from './main';
 
 const img1 = 'http://api.ztb.alpha.flashdiet.cn/uploads/2018-12/828591544170116.jpg';
-const img2 = require('./img/timg.jpeg');
+const img2 = require('./img/hl.jpeg');
 
 class Test extends React.Component {
   constructor(props) {

@@ -62,6 +62,9 @@ class Rotate extends PureComponent {
       previewVisible: false
     }, () => {
       const { onCancel } = this.props;
+      this.imgStyle.style.width = 'auto';
+      this.imgStyle.style.height = 'auto';
+      this.imgBox.style.height = 'auto';
       onCancel && onCancel();
     });
   }
@@ -152,7 +155,7 @@ class Rotate extends PureComponent {
       maskClosable: true,
       forceRender: true,
     };
-console.log(imgHeightWidth)
+console.log(imgHeightWidth);
     return (
       <Modal {...props}>
         <div
