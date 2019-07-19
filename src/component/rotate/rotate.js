@@ -112,6 +112,8 @@ class Rotate extends PureComponent {
       } else {
         this.imgStyle.style.width = `${boxHeight}px`;
       }
+    } else if (imgHeightWidth === 1) {
+      this.imgStyle.style.width = `${boxHeight}px`;
     } else {
       // 图片高比较长
       if ((current / 90) % 2 === 0) {
